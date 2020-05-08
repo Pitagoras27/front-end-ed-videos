@@ -150,3 +150,18 @@ body {
     letter-spacing: 1px;
     margin: 10px 0px;
 }
+
+@media only screen and (max-width: 600px) {
+    .login__container {
+        background-color: transparent;
+        border: 100px;
+        box-shadow: none;
+        padding: 0px;
+        width: 100%;
+    }
+
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
