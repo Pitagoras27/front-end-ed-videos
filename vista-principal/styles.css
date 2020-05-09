@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Muli', sans-serif;
-    background: #8f57fd;
+    background-image: radial-gradient(circle, #b94bf8, #3a1957);
 }
 
 * {
@@ -10,7 +10,6 @@ body {
 
 .header {
     align-items: center;
-    background: #8f57fd;
     color: white;
     display: flex;
     height: 100px;
