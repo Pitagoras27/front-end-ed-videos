@@ -148,6 +148,21 @@ ul:hover {
     object-fit: cover;
 }
 
+.carousel-item__details--title {
+    color: white;
+    margin: 5px 0px 0px 0px;
+}
+
+.carousel-item__details--subtitle {
+    color: white;
+    font-size: 8px;
+    margin: 3px 0px;
+}
+
+.carousel-item:hover .carousel-item__details {
+    opacity: 1;
+}
+
 .carousel-item__details {
     background: linear-gradient(
         to top,
@@ -163,4 +178,49 @@ ul:hover {
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+.carousel-item__details--img {
+    width: 20px;
+}
+
+.categories__title {
+    background: #3a1957;
+    color: white;
+    font-size: 16px;
+    margin-top: -16px;
+    position: absolute;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.footer {
+    align-items: center;
+    background-color: #3a1957;
+    display: flex;
+    height: 100px;
+    width: 100%;
+}
+
+.footer a {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+    .main__description--title {
+        font-size: 30px;
+    }
+
+    .footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
