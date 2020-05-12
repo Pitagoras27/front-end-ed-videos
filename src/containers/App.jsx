@@ -8,7 +8,11 @@ import Footer from '../components/Footer/Footer';
 import '../assets/styles/App.scss';
 
 const App = () => {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState({
+    mylist: [],
+    trends: [],
+    originals: [],
+  });
 
   useEffect(() => {
     fetch('http://localhost:3000/initalStates')
@@ -16,32 +20,61 @@ const App = () => {
       .then(data => setVideos(data));
   }, []);
 
-  console.log(videos);
-
+  const { mylist, trends, originals } = videos;
   return (
     <div>
       <Header />
       <Seach />
-      <Categories title='Mi Lista'>
-        <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-        </Carousel>
-      </Categories>
+      {
+        mylist.length > 0 &&
+        (
+          <Categories title='Mi Lista'>
+            <Carousel>
+              <CarouselItem />
+              <CarouselItem />
+              <CarouselItem />
+            </Carousel>
+          </Categories>
+        )
+      }
 
-      <Categories title='tendencias'>
-        <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-        </Carousel>
-      </Categories>
+      {
+        trends.length > 0 && (
+          <Categories title='tendencias'>
+            <Carousel>
+              {
+                trends.map((items) => {
+                  return (
+                    <CarouselItem
+                      key={items.id}
+                      cover={items.cover}
+                      description={items.description}
+                      year={items.year}
+                      contentRating={items.contentRating}
+                      duration={items.duration}
+                    />
+                  );
+                })
+              }
+            </Carousel>
+          </Categories>
+        )
+      }
 
-      <Categories title='originales'>
-        <Carousel>
-          <CarouselItem />
-        </Carousel>
-      </Categories>
+      {
+        originals.length > 0 && (
+          <Categories title='originales'>
+            <Carousel>
+              {
+                originals.map((items) => (
+                  <CarouselItem key={items.id} {...items} />
+                ))
+              }
+            </Carousel>
+          </Categories>
+        )
+      }
+
       <Footer />
     </div>
   );
