@@ -7,7 +7,7 @@ const CarouselItem = () => (
   <div className='carousel-item'>
     <img
       className='carousel-item__img'
-      src='https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+      src='https://images.pexels.com/photos/413879/pexels-photo-413879.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260'
       alt='People'
     />
     <div className='carousel-item__details'>

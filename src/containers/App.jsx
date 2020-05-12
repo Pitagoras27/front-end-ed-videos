@@ -11,7 +11,22 @@ const App = () => (
   <div>
     <Header />
     <Seach />
-    <Categories>
+    <Categories title='Mi Lista'>
+      <Carousel>
+        <CarouselItem />
+        <CarouselItem />
+        <CarouselItem />
+      </Carousel>
+    </Categories>
+
+    <Categories title='tendencias'>
+      <Carousel>
+        <CarouselItem />
+        <CarouselItem />
+      </Carousel>
+    </Categories>
+
+    <Categories title='originales'>
       <Carousel>
         <CarouselItem />
       </Carousel>
