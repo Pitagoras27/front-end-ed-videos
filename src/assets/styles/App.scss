@@ -1,5 +1,9 @@
 body {
     margin: 0;
-    background-color: royalblue;
-    color: white;
+    font-family: 'Muli', sans-serif;
+    background-image: radial-gradient(circle, #b94bf8, #3a1957);
+}
+
+* {
+    box-sizing: border-box;
 }
