@@ -4,6 +4,7 @@ import Seach from '../components/Search/Search';
 import Categories from '../components/Categories/Categories';
 import Carousel from '../components/Carousel/Carousel';
 import CarouselItem from '../components/CarouselItem/CarouselItem';
+import Footer from '../components/Footer/Footer';
 import '../assets/styles/App.scss';
 
 const App = () => (
@@ -15,6 +16,7 @@ const App = () => (
         <CarouselItem />
       </Carousel>
     </Categories>
+    <Footer />
   </div>
 );
 
