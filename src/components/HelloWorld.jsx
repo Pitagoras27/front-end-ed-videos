@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
+import '../assets/styles/App.scss';
 
-const HelloWorld = () => <h1>Hola Mundo</h1>
+const HelloWorld = () => <h1>Hola Mundo</h1>;
 
-export default HelloWorld
+export default HelloWorld;
