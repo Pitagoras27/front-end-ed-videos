@@ -11,6 +11,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  performance: {
+    hints: false,
+  },
   module: {
     rules: [
       {
@@ -18,7 +21,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        }
+        },
       },
       {
         test: /\.html$/,
