@@ -5,22 +5,13 @@ import Categories from '../components/Categories/Categories';
 import Carousel from '../components/Carousel/Carousel';
 import CarouselItem from '../components/CarouselItem/CarouselItem';
 import Footer from '../components/Footer/Footer';
+import initialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
+const API = 'http://localhost:3000/initalStates';
 const App = () => {
-  const [videos, setVideos] = useState({
-    mylist: [],
-    trends: [],
-    originals: [],
-  });
-
-  useEffect(() => {
-    fetch('http://localhost:3000/initalStates')
-      .then(res => res.json())
-      .then(data => setVideos(data));
-  }, []);
-
-  const { mylist, trends, originals } = videos;
+  const dataApi = initialState(API);
+  const { mylist, trends, originals } = dataApi;
   return (
     <div>
       <Header />
