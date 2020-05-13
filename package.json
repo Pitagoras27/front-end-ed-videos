@@ -20,6 +20,7 @@
     },
     "homepage": "https://github.com/Pitagoras27/front-end-ed-videos#readme",
     "dependencies": {
+        "prop-types": "^15.7.2",
         "react": "16.13.1",
         "react-dom": "16.13.1"
     },
