@@ -9,7 +9,7 @@ import initialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
 const API = 'http://localhost:3000/initalStates';
-const App = () => {
+const Home = () => {
   const dataApi = initialState(API);
   const { mylist, trends, originals } = dataApi;
   return (
@@ -71,4 +71,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
