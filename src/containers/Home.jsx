@@ -35,6 +35,7 @@ const Home = ({ mylist, trends, originals }) => {
                   return (
                     <CarouselItem
                       key={items.id}
+                      id={items.id}
                       cover={items.cover}
                       description={items.description}
                       year={items.year}

@@ -8,6 +8,11 @@ const reducer = (state, action) => {
           action.payload,
         ],
       };
+    case 'REMOVE_FAVORITE':
+      return {
+        ...state,
+        mylist: state.mylist.filter((item) => parseInt(action.payload) !== item.id),
+      };
     default:
       return state;
   }
