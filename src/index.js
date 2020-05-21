@@ -7,7 +7,7 @@ import reducer from './reducers';
 import App from './routes';
 
 const initialState = {
-  "users": {},
+  "user": {},
   "playing": {},
   "mylist": [],
   "trends": [

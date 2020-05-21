@@ -15,6 +15,7 @@ const reducer = (state, action) => {
         mylist: state.mylist.filter((item) => item.id !== correctType),
       };
     case 'SEND_FORM':
+      console.log(action.payload, 'asas');
       return {
         ...state,
         user: action.payload,
