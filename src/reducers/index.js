@@ -9,9 +9,15 @@ const reducer = (state, action) => {
         ],
       };
     case 'REMOVE_FAVORITE':
+      const correctType = parseInt(action.payload);
       return {
         ...state,
-        mylist: state.mylist.filter((item) => parseInt(action.payload) !== item.id),
+        mylist: state.mylist.filter((item) => item.id !== correctType),
+      };
+    case 'SEND_FORM':
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;
