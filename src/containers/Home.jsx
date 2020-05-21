@@ -21,7 +21,6 @@ const Home = ({ mylist, trends, originals }) => {
                   <CarouselItem key={index} {...items} />
                 ))
               }
-              <CarouselItem />
             </Carousel>
           </Categories>
         )
