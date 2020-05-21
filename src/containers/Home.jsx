@@ -16,8 +16,11 @@ const Home = ({ mylist, trends, originals }) => {
         (
           <Categories title='Mi Lista'>
             <Carousel>
-              <CarouselItem />
-              <CarouselItem />
+              {
+                mylist.map((items, index) => (
+                  <CarouselItem key={index} {...items} />
+                ))
+              }
               <CarouselItem />
             </Carousel>
           </Categories>
