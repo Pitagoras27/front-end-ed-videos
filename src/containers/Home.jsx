@@ -1,15 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Seach from '../components/Search/Search';
 import Categories from '../components/Categories/Categories';
 import Carousel from '../components/Carousel/Carousel';
 import CarouselItem from '../components/CarouselItem/CarouselItem';
-import initialState from '../hooks/useInitialState';
 import '../assets/styles/App.scss';
 
-const API = 'http://localhost:3000/initalStates';
-const Home = () => {
-  const dataApi = initialState(API);
-  const { mylist, trends, originals } = dataApi;
+const Home = ({ mylist, trends, originals }) => {
   return (
     <>
       <Seach />
@@ -66,4 +64,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  mylist: state.mylist,
+  trends: state.trends,
+  originals: state.originals,
+});
+
+export default connect(mapStateToProps, null)(Home);
