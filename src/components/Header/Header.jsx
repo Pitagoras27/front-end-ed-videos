@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ import { logout } from '../../actions';
 import '../../assets/styles/components/Header.scss';
 
 const Header = (props) => {
+  const { isLogin } = props;
   const { user } = props;
   const activeSesion = Object.keys(user).length > 0;
   const endOfSession = () => {
@@ -16,7 +18,7 @@ const Header = (props) => {
   };
 
   return (
-    <header className='header'>
+    <header className={`header${isLogin}`}>
       <Link to='/'>
         <img
           className='header__img'
@@ -51,7 +53,17 @@ const Header = (props) => {
         </ul>
       </div>
     </header>
-  )
+  );
+};
+
+Header.propTypes = {
+  user: PropTypes.object,
+  isLogin: PropTypes.string,
+};
+
+Header.defaultProps = {
+  user: {},
+  isLogin: '',
 };
 
 const mapStateToProps = (state) => ({

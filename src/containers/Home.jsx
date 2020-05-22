@@ -5,11 +5,13 @@ import Seach from '../components/Search/Search';
 import Categories from '../components/Categories/Categories';
 import Carousel from '../components/Carousel/Carousel';
 import CarouselItem from '../components/CarouselItem/CarouselItem';
+import Header from '../components/Header/Header';
 import '../assets/styles/App.scss';
 
 const Home = ({ mylist, trends, originals }) => {
   return (
     <>
+      <Header />
       <Seach />
       {
         mylist.length > 0 &&
