@@ -1,5 +1,8 @@
 import express from 'express';
 
+import config from '../config';
+console.log(config)
+const { env, port } = config;
 const app = express();
 
 app.get('*', (req, res) => {
@@ -8,5 +11,5 @@ app.get('*', (req, res) => {
 
 app.listen(3000, (err) => {
   if (err) console.log(err);
-  else console.log('Server running on port 3000');
+  else console.log(`Server running on port ${port} and enviroment ${env}`);
 });
