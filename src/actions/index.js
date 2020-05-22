@@ -12,3 +12,8 @@ export const sendForm = (payload) => ({
   type: 'SEND_FORM',
   payload,
 });
+
+export const logout = (payload) => ({
+  type: 'LOGOUT',
+  payload,
+});

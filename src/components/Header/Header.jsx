@@ -2,14 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import '../../assets/styles/components/Header.scss';
 import gravatar from '../../utils/gravatar';
 import logo from '../../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../../assets/static/user-icon.png';
+import { logout } from '../../actions';
+import '../../assets/styles/components/Header.scss';
 
 const Header = (props) => {
   const { user } = props;
-  const existUserGravar = Object.keys(user);
+  const activeSesion = Object.keys(user);
+  console.log('invoque header!->', activeSesion);
+  const endOfSession = () => {
+    props.logout({});
+  };
 
   return (
     <header className='header'>
@@ -23,14 +28,27 @@ const Header = (props) => {
       <div className='header__menu'>
         <div className='header__menu--profile'>
           <img
-            src={existUserGravar.length > 0 ? gravatar(user.email) : userIcon}
+            src={activeSesion.length > 0 ? gravatar(user.email) : userIcon}
             alt=''
           />
           <p>Perfil</p>
         </div>
         <ul>
           <li><a href='/'>Cuenta</a></li>
-          <li><a href='/'>Cerrar Sesión</a></li>
+          {
+            activeSesion.length > 0 ?
+              (
+                <li>
+                  <a
+                    href='#logout'
+                    onClick={endOfSession}
+                  >
+                    Cerrar Sesión
+                  </a>
+                </li>
+              ) :
+              (<li><a href='/'>Iniciar Sesión</a></li>)
+          }
         </ul>
       </div>
     </header>
@@ -41,5 +59,9 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = {
+  logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
