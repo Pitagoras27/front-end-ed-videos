@@ -10,8 +10,7 @@ import '../../assets/styles/components/Header.scss';
 
 const Header = (props) => {
   const { user } = props;
-  const activeSesion = Object.keys(user);
-  console.log('invoque header!->', activeSesion);
+  const activeSesion = Object.keys(user).length > 0;
   const endOfSession = () => {
     props.logout({});
   };
@@ -28,7 +27,7 @@ const Header = (props) => {
       <div className='header__menu'>
         <div className='header__menu--profile'>
           <img
-            src={activeSesion.length > 0 ? gravatar(user.email) : userIcon}
+            src={activeSesion ? gravatar(user.email) : userIcon}
             alt=''
           />
           <p>Perfil</p>
@@ -36,7 +35,7 @@ const Header = (props) => {
         <ul>
           <li><a href='/'>Cuenta</a></li>
           {
-            activeSesion.length > 0 ?
+            activeSesion ?
               (
                 <li>
                   <a
