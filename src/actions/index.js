@@ -17,3 +17,8 @@ export const logout = (payload) => ({
   type: 'LOGOUT',
   payload,
 });
+
+export const register = (payload) => ({
+  type: 'REGISTER',
+  payload,
+});

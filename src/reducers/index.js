@@ -20,7 +20,11 @@ const reducer = (state, action) => {
         user: action.payload,
       };
     case 'LOGOUT':
-      console.log(action.payload, '<<<<<<<<<');
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case 'REGISTER':
       return {
         ...state,
         user: action.payload,

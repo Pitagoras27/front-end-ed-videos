@@ -33,7 +33,7 @@ const Header = (props) => {
           <p>Perfil</p>
         </div>
         <ul>
-          <li><a href='/'>Cuenta</a></li>
+          <li>{ activeSesion ? user.name : null }</li>
           {
             activeSesion ?
               (
@@ -46,7 +46,7 @@ const Header = (props) => {
                   </a>
                 </li>
               ) :
-              (<li><a href='/'>Iniciar Sesión</a></li>)
+              (<li><Link to='/login'>Iniciar Sesión</Link></li>)
           }
         </ul>
       </div>
