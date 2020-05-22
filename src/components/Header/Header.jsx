@@ -18,7 +18,7 @@ const Header = (props) => {
   };
 
   return (
-    <header className={`header${isLogin}`}>
+    <header className={`header ${isLogin}`}>
       <Link to='/'>
         <img
           className='header__img'
