@@ -22,3 +22,8 @@ export const register = (payload) => ({
   type: 'REGISTER',
   payload,
 });
+
+export const getVideoSource = (payload) => ({
+  type: 'PLAYING',
+  payload,
+});
