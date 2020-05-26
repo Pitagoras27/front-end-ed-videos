@@ -1,23 +1,4 @@
-body {
-  margin: 0;
-  font-family: 'Muli', sans-serif;
-}
 
-.header {
-  align-items: center;
-  background-color: #21c08b;
-  color: white;
-  display: flex;
-  height: 100px;
-  justify-content: space-between;
-  top: 0px;
-  width: 100%;
-}
-
-.header__img {
-  margin-left: 30px;
-  width: 200px;
-}
 
 .register {
   background-image: linear-gradient(#21c08b, #8f57fd);
@@ -40,7 +21,7 @@ body {
   justify-content: space-around;
   min-height: 600px;
   padding: 60px 68px 40px;
-  width: 300px;
+  width: 440px;
 }
 
 .register__container--form {
@@ -110,19 +91,4 @@ body {
   height: 50px;
   letter-spacing: 1px;
   margin: 10px 0px;
-}
-
-@media only screen and (max-width: 600px) {
-  .register__container {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0px;
-    width: 100%;
-  }
-
-  .footer {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }

@@ -1,0 +1,12 @@
+@import './Vars.scss';
+@import './MediaQueries.scss';
+
+body {
+    margin: 0;
+    font-family: 'Muli', sans-serif;
+    background-image: $bg_color;
+}
+
+* {
+    box-sizing: border-box;
+}
