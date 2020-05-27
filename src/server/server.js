@@ -1,7 +1,7 @@
 import express from 'express';
 
 import config from '../config';
-console.log(config)
+
 const { env, port } = config;
 const app = express();
 
