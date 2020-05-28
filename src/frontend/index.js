@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
+
 import reducer from './reducers';
 import initialState from './initialState';
 import App from './routes/App';
