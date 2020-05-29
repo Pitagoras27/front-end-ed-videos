@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-cli --config webpack.config.js",
+    "build": "webpack-cli --config webpack.config.dev.js",
     "start": "webpack-dev-server --open --mode development",
-    "start:dev": "nodemon src/server/index"
+    "start:dev": "nodemon src/server/index --delay 1500ms"
   },
   "keywords": [],
   "author": "",

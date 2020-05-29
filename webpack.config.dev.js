@@ -2,16 +2,18 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/frontend/index.js',
+  entry: [
+    './src/frontend/index.js',
+  ],
   output: {
-    path: path.resolve(__dirname, 'src/server/public'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'assets/app.js',
     publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  mode: 'production',
+  mode: 'development',
   performance: {
     hints: false,
   },
@@ -23,6 +25,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
       },
       {
         test: /\.(s*)css$/,
@@ -46,6 +56,10 @@ module.exports = {
         ],
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
