@@ -10,10 +10,14 @@ import initialState from './initialState';
 import App from './routes/App';
 
 const history = createBrowserHistory();
+const preloadedState = window.__PRELOADED_STATE__;
+console.log('--->>', preloadedState); // undefined ??
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, initialState, composeEnhancers());
 
-ReactDOM.render(
+delete window.__PRELOADED_STATE__;
+
+ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
       <App />
