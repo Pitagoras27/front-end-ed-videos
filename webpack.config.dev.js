@@ -20,6 +20,12 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre', // indica a webpack que ejecute este loader antes de cualquier verificación
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
