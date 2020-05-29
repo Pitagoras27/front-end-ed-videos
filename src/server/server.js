@@ -12,6 +12,7 @@ import { StaticRouter } from 'react-router-dom';
 import serverRoutes from '../frontend/routes/serverRoutes';
 import reducer from '../frontend/reducers';
 import initialState from '../frontend/initialState';
+import getManifest from './getManifest';
 
 dotenv.config();
 
@@ -20,7 +21,7 @@ const app = express();
 
 if (ENV === 'development') {
   console.log('Development config');
-  const webpackConfig = require('../../webpack.config');
+  const webpackConfig = require('../../webpack.config.dev');
   const webpackDevMiddleware = require('webpack-dev-middleware')
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(webpackConfig);
@@ -28,20 +29,26 @@ if (ENV === 'development') {
 
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
-
 } else {
+  app.use((req, res, next) => {
+    if (!req.hashManifest) req.hashManifest = getManifest();
+    next();
+  });
   app.use(express.static(`${__dirname}/public`));
   app.use(helmet());
   app.use(helmet.permittedCrossDomainPolicies()); // Cross Domain Inhabilitado
   app.disable('x-powered-by'); // Se deshabilita cabecera que indica en que se está sirviendo la app
 }
 
-const setResponse = (html, preloadedState) => {
+const setResponse = (html, preloadedState, manifest) => {
+  const mainStyles = manifest ? manifest['main.css'] : 'assets/app.css';
+  const mainBuild = manifest ? manifest['main.js'] : 'assets/app.js';
+
   return (`
     <!DOCTYPE html>
       <html>
         <head>
-          <link rel="stylesheet" href="assets/app.css" type="text/css">
+          <link rel="stylesheet" href=${mainStyles} type="text/css">
           <title>Platzi Video</title>
         </head>
         <body>
@@ -51,7 +58,7 @@ const setResponse = (html, preloadedState) => {
           // https://redux.js.org/recipes/server-rendering/#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="assets/app.js" type="text/javascript"></script>
+        <script src="${mainBuild}" type="text/javascript"></script>
         </body>
       </html>
     `
@@ -67,11 +74,10 @@ const renderApp = (req, res) => {
       <StaticRouter location={req.url} context={{}}>
         {renderRoutes(serverRoutes)}
       </StaticRouter>
-    </Provider>
-  )
-
-  res.send(setResponse(html, preloaderState));
-}
+    </Provider>,
+  );
+  res.send(setResponse(html, preloaderState, req.hashManifest));
+};
 
 app.get('*', renderApp);
 
