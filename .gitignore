@@ -2,3 +2,5 @@ front-end-videos-ed.code-workspace
 node_modules
 dist
 .env
+
+src/server/public
