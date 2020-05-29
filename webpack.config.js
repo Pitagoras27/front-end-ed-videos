@@ -1,5 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/frontend/index.js',
@@ -14,6 +16,10 @@ module.exports = {
   mode: 'production',
   performance: {
     hints: false,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
   module: {
     rules: [
@@ -48,6 +54,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new CompressionWebpackPlugin({
+      test: /\.js$|\.css$/,
+      filename: '[path].gz',
+    }),
     new MiniCssExtractPlugin({
       filename: 'assets/app.css',
     }),
